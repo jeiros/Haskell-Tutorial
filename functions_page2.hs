@@ -18,3 +18,17 @@ factorial :: Integer -> Integer
 factorial n = product [1..n]
 
 -- [1..0] is [] and product [] is 0 by definition
+
+
+-- Float is a real floating point with single precision.
+circumference :: Float -> Float  
+circumference r = 2 * pi * r
+--  ghci> circumference 4.0  
+--  25.132742  
+
+-- Double is a real floating point with double the precision!
+circumference' :: Double -> Double  
+circumference' r = 2 * pi * r  
+--  ghci> circumference' 4.0  
+--  25.132741228718345  
+
