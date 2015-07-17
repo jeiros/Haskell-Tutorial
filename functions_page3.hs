@@ -66,7 +66,7 @@ bmiTell weight height
     | weight / height ^ 2 <= 18.5 = "You're underweight, you emo, you!"
     | weight / height ^ 2 <= 25.0 = "You're supposedly normal. Pffft, I bet you're ugly!"
     | weight / height ^ 2 <= 30.0 = "You're fat! Lose some weight, fatty!"
-    | otherwise   								= "You're a whale, congratulations!"
+    | otherwise										= "You're a whale, congratulations!"
 
 -- implementing max using Guards
 max' :: (Ord a) => a -> a -> a
@@ -86,14 +86,14 @@ a `myCompare` b
 
 -- Redefining bmiTell using a where binding 
 -- to not repeat ourselves
-bmiTell :: (RealFloat a) => a -> a -> String
-bmiTell weight height
+bmiTell' :: (RealFloat a) => a -> a -> String
+bmiTell' weight height
     | bmi <= skinny = "You're underweight, you emo, you!"
     | bmi <= normal = "You're supposedly normal. Pffft, I bet you're ugly!"
-    | bmi <= fat = "You're fat! Lose some weight, fatty!"
-    | otherwise   								= "You're a whale, congratulations!"
-    where bmi = weight / height ^ 2
-    		  (skinny, normal, fat) = (18.5, 25.0, 30.0)
+    | bmi <= fat    = "You're fat! Lose some weight, fatty!"
+    | otherwise     = "You're a whale, congratulations!"
+    where bmi = weight / height ^ 2  
+          (skinny, normal, fat) = (18.5, 25.0, 30.0)  
 
 -- You can also define new functions in the where blocks
 -- This function takes a list of (weight, height) pair tuples
