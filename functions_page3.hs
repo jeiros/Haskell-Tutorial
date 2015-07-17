@@ -88,12 +88,12 @@ a `myCompare` b
 -- to not repeat ourselves
 bmiTell' :: (RealFloat a) => a -> a -> String
 bmiTell' weight height
-    | bmi <= skinny = "You're underweight, you emo, you!"
-    | bmi <= normal = "You're supposedly normal. Pffft, I bet you're ugly!"
-    | bmi <= fat    = "You're fat! Lose some weight, fatty!"
-    | otherwise     = "You're a whale, congratulations!"
-    where bmi = weight / height ^ 2  
-          (skinny, normal, fat) = (18.5, 25.0, 30.0)  
+     | bmi <= skinny = "You're underweight, you emo, you!"
+     | bmi <= normal = "You're supposedly normal. Pffft, I bet you're ugly!"
+     | bmi <= fat    = "You're fat! Lose some weight, fatty!"
+     | otherwise     = "You're a whale, congratulations!"
+     where bmi = weight / height ^ 2  
+           (skinny, normal, fat) = (18.5, 25.0, 30.0)  
 
 -- You can also define new functions in the where blocks
 -- This function takes a list of (weight, height) pair tuples
@@ -101,3 +101,35 @@ bmiTell' weight height
 calcBmis :: (RealFloat a) => [(a, a)] -> [a]
 calcBmis xs = [bmi w h | (w, h) <- xs]
 	where bmi weight height = weight / height ^ 2
+
+
+cylinderArea :: (RealFloat a) => a -> a -> a
+cylinderArea r h =
+  let sideArea = 2 * pi * r * h
+      topArea  = pi * r^2
+  in sideArea + 2 * topArea
+
+-- Redefining calcBmis using let bindings
+-- inside list comprehensions
+calcBmis' :: (RealFloat a) => [(a, a)] -> [a]
+calcBmis' xs = [bmi | (w, h) <- xs, let bmi = w / h ^ 2]
+
+-- Case expressions
+head'' :: [a] -> a
+head'' xs = case xs of [] -> error "No head for empty lists!"
+                       (x:_) -> x
+
+-- Case expressions can be used anywhere
+
+describeList :: [a] -> String
+describeList xs = "The list is " ++
+  case xs of []  -> "empty."
+             [x] -> "a singleton list."
+             xs  -> "a longer list."
+
+-- This could have also been
+describeList' :: [a] -> String
+describeList' xs = "The list is " ++ what xs
+  where what []  = "empty."
+        what [x] = "a singleton list."
+        what xs  = "a longer list."
