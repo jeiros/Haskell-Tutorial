@@ -9,7 +9,7 @@ lucky x = if x ==7
 -- Using pattern matching
 lucky' :: (Integral a) => a -> String
 lucky' 7 = "LUCKY NUMBER SEVEN"
-lucky' x = "Sorry, out of	luck"
+lucky' x = "Sorry, out of luck"
 
 
 -- Defining the factorial recursively
