@@ -3,8 +3,8 @@
 
 lucky :: (Integral a) => a -> String
 lucky x = if x ==7
-	then "LUCKY NUMBER SEVEN!"
-	else "Sorry, out of luck"
+  then "LUCKY NUMBER SEVEN!"
+  else "Sorry, out of luck"
 
 -- Using pattern matching
 lucky' :: (Integral a) => a -> String
@@ -66,13 +66,13 @@ bmiTell weight height
     | weight / height ^ 2 <= 18.5 = "You're underweight, you emo, you!"
     | weight / height ^ 2 <= 25.0 = "You're supposedly normal. Pffft, I bet you're ugly!"
     | weight / height ^ 2 <= 30.0 = "You're fat! Lose some weight, fatty!"
-    | otherwise										= "You're a whale, congratulations!"
+    | otherwise                   = "You're a whale, congratulations!"
 
 -- implementing max using Guards
 max' :: (Ord a) => a -> a -> a
 max' a b
-		| a > b 		= a
-		| otherwise = b
+    | a > b     = a
+    | otherwise = b
 
 
 -- Not only can we call functions as infix with backticks, 
@@ -80,9 +80,9 @@ max' a b
 -- easier to read that way.
 myCompare :: (Ord a) => a -> a -> Ordering
 a `myCompare` b
-		| a > b 	= GT
-		| a == b 	= EQ
-		| a < b 	= LT
+    | a > b   = GT
+    | a == b  = EQ
+    | a < b   = LT
 
 -- Redefining bmiTell using a where binding 
 -- to not repeat ourselves
@@ -100,7 +100,7 @@ bmiTell' weight height
 -- and returns a list with the bmis for each pair
 calcBmis :: (RealFloat a) => [(a, a)] -> [a]
 calcBmis xs = [bmi w h | (w, h) <- xs]
-	where bmi weight height = weight / height ^ 2
+  where bmi weight height = weight / height ^ 2
 
 
 cylinderArea :: (RealFloat a) => a -> a -> a
